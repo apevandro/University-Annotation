@@ -1,0 +1,158 @@
+DML - Data Manipulation Language
+SQL
+
+A)  SELECT * FROM courses;
+
+B)  SELECT Name FROM students s 
+    WHERE s.City like 'Sao Carlos-SP' 
+	ORDER BY Name DESC;
+	
+C)	SELECT Name FROM professors p
+    WHERE p.Admission < DATE('1993-01-01');
+	
+	* ORACLE XE 11G Version
+	SELECT Name FROM professors p
+    WHERE p.Admission < TO_DATE('1993-01-01', 'YYYY-MM-DD');
+	
+D)	SELECT Name FROM students
+	WHERE Name like	'J%';
+	
+E)  SELECT d.Name FROM disciplines d, disc_course dc, courses c
+    WHERE d.DiscId = dc.DiscId AND
+          dc.CourseId = c.CourseId AND
+          c.Name like 'Ciencia da Computacao';
+
+F)	SELECT c.Name FROM courses c, disc_course dc, disciplines d
+    WHERE c.CourseId = dc.CourseId AND
+	dc.DiscId = d.DiscId AND 
+	d.Name = 'Calculo Numerico';
+	
+G)  SELECT d.Name FROM disciplines d, students s, classes c
+    WHERE d.DiscId = c.DiscId AND
+    c.Semester like '01/1998' AND
+    c.StudentId = s.StudentId AND
+    s.Name like 'Marcos Joao Casanova';
+
+H)  SELECT d.Name FROM disciplines d, students s, classes c
+    WHERE s.studentId = c.studentId AND
+          c.discId = d.discId AND
+          s.name like 'Ailton Castro' AND
+          c.grade < 7;
+
+I)  SELECT s.Name FROM students s, disciplines d, classes c
+    WHERE s.studentId = c.studentId AND
+          c.discId = d.discId AND
+          d.name like 'Calculo Numerico' AND
+          c.semester like '01/1998' AND
+          c.grade < 7;
+
+J)  SELECT distinct d.Name FROM professors p, disciplines d, classes c
+    WHERE c.DiscId = d.DiscId AND
+          c.ProfId = p.ProfId AND
+          p.Name like 'Ramon Travanti';
+		  
+K)  SELECT distinct p.Name FROM professors p, disciplines d, classes c
+    WHERE c.ProfId = p.ProfId AND
+          c.DiscId = d.DiscId AND
+		  d.Name like 'Banco de Dados';
+
+L)  SELECT min(c.Grade), max(c.Grade) FROM disciplines d, classes c
+    WHERE d.Name like 'Calculo Numerico' AND
+          d.DiscId = c.DiscId AND 
+          c.Semester like '01/1998';
+
+M)  SELECT s.Name, c.Grade FROM students s, classes c, disciplines d
+    WHERE c.StudentId = s.StudentId AND
+	      c.DiscId = d.DiscId AND
+		  d.Name like 'Engenharia de Software' AND
+          c.Semester like '01/1998' AND
+          c.Grade in ( SELECT max(c.Grade) FROM students s, classes c, disciplines d
+                       WHERE c.StudentId = s.StudentId AND
+                       c.DiscId = d.DiscId AND
+                       d.Name like 'Engenharia de Software' AND
+                       c.Semester like '01/1998' );
+					   
+N)  SELECT s.Name, d.Name, p.Name FROM students s, disciplines d, professors p, classes c
+    WHERE c.StudentId = s.StudentId AND
+          c.DiscId = d.DiscId AND
+		  c.ProfId = p.ProfId AND
+		  c.Semester like '01/1998'
+		  ORDER BY s.Name ASC;
+
+O)  SELECT s.Name, d.Name, c.Grade FROM students s, disciplines d, classes c, courses co, disc_course dc
+    WHERE co.Name like 'Ciencia da Computacao' AND
+	      c.Semester like '01/1998' AND 
+		  s.studentId = c.studentId AND
+		  c.discId = d.discId AND
+		  d.discId = dc.discId AND
+		  dc.courseId = co.courseId AND
+		  co.courseId = s.courseId;
+
+P)  SELECT avg(c.Grade) FROM classes c, professors p
+    WHERE c.ProfId = p.ProfId AND
+          p.Name like 'Marcos Salvador';
+
+Q)  SELECT s.Name, d.Name, c.Grade FROM students s, disciplines d, classes c
+    WHERE c.DiscId = d.DiscId AND
+	      c.StudentId = s.StudentId AND
+		  c.Grade BETWEEN 5 AND 7
+		  ORDER BY d.Name ASC;
+		  
+R)  SELECT avg(c.Grade) FROM disciplines d, classes c
+    WHERE d.Name like 'Calculo Numerico' AND
+	      d.DiscId = c.DiscId AND
+		  c.Semester like '01/1998';
+		  
+S)  SELECT count(c.StudentId) FROM classes c, professors p
+    WHERE p.Name like 'Abgair Simon Ferreira' AND
+          p.ProfId = c.ProfId AND
+          c.Semester like '01/1998';
+
+T)  SELECT avg(c.Grade), count(c.StudentId) FROM students s, classes c
+    WHERE s.Name like 'Edvaldo Carlos Silva' AND
+          s.StudentId = c.StudentId AND
+          c.Semester like '01/1998';
+
+U)  SELECT d.Name, avg(c.Grade) FROM classes c, disciplines d
+    WHERE d.DiscId = c.DiscId AND
+          c.Semester like '01/1998'
+          GROUP BY d.Name
+          ORDER BY d.Name ASC;
+		  
+V)  SELECT p.Name, avg(c.Grade), count(c.Grade) FROM professors p, disciplines d, classes c
+    WHERE c.ProfId = p.ProfId AND 
+	      c.DiscId = d.DiscId AND
+          c.Semester like '01/1998'
+          GROUP BY p.Name;
+
+W)  SELECT d.Name, avg(c.Grade) FROM courses co, disc_course dc, disciplines d, classes c
+    WHERE co.Name like 'Ciencia da Computacao' AND
+          co.CourseId = dc.CourseId AND
+          dc.DiscId = d.DiscId AND
+          d.DiscId = c.DiscId AND
+          c.Semester like '01/1998'
+          GROUP BY d.Name;
+		  
+X)  SELECT sum(d.Credits) FROM disciplines d, students s, classes c
+    WHERE d.DiscId = c.DiscId AND
+          c.StudentId = s.StudentId AND
+          s.Name like 'Edvaldo Carlos Silva' AND
+		  c.Grade >= 7;
+		 
+Y)  SELECT s.Name, sum(d.Credits) FROM disciplines d, students s, classes c
+    WHERE c.DiscId = d.DiscId AND
+	      c.StudentId = s.StudentId AND
+		  c.Grade >= 7 
+		  GROUP BY s.Name
+		  HAVING SUM(d.Credits) >= 70;
+		 
+Z)  SELECT s.Name, d.Name, p.Name FROM students s, disciplines d, professors p, classes c, courses co, disc_course dc
+    WHERE c.StudentId = s.StudentId AND
+	      c.ProfId = p.ProfId AND
+		  c.DiscId = d.DiscId AND
+		  d.DiscId = dc.DiscId AND 
+		  dc.CourseId = co.CourseId AND
+		  s.CourseId = co.CourseId AND
+		  c.Semester like '01/1998' AND
+		  c.Grade > 8 AND
+		  co.Name like 'Ciencia da Computacao';

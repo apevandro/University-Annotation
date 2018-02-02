@@ -1,0 +1,47 @@
+# University
+
+create table COURSES (
+       CourseId integer not null,
+       Name varchar(255),
+       TotalCredits integer,
+       primary key (CourseId));
+
+create table DISCIPLINES (
+       DiscId integer not null,
+       Name varchar(255),
+       Credits integer,
+       primary key (DiscId));
+
+create table DISC_COURSE (
+       CourseId integer not null,
+       DiscId integer not null,
+       primary key (CourseId, DiscId),
+       foreign key (CourseId) references COURSES (CourseId),
+       foreign key (DiscId) references DISCIPLINES (DiscId));
+
+create table STUDENTS (
+       StudentId integer not null,
+       Name varchar(255),
+       Address varchar(255) not null,
+       City varchar(255) not null,
+       CourseId integer,
+       primary key (StudentId),
+       foreign key (CourseId) references COURSES (CourseId));
+
+create table PROFESSORS (
+       ProfId integer not null,
+       Name varchar(255),
+       Admission date,
+       ResearchArea varchar(255),
+       primary key (ProfId));
+
+create table CLASSES (
+       StudentId integer not null,
+       DiscId integer not null,
+       ProfId integer not null,
+       Semester varchar(255) not null,
+       Grade double precision not null,
+       primary key (StudentId, DiscId, ProfId, Semester),
+       foreign key (StudentId) references STUDENTS (StudentId),
+       foreign key (DiscId) references DISCIPLINES (DiscId),
+       foreign key (ProfId) references PROFESSORS (ProfId));

@@ -1,0 +1,178 @@
+# University
+
+INSERT INTO DISCIPLINES (DiscId, Name, Credits)
+VALUES (1, 'Banco de Dados', 30);
+
+INSERT INTO DISCIPLINES (DiscId, Name, Credits)
+VALUES (2, 'Estrutura de Dados', 30);
+
+INSERT INTO DISCIPLINES (DiscId, Name, Credits)
+VALUES (3, 'Direito Penal', 25);
+
+INSERT INTO DISCIPLINES (DiscId, Name, Credits)
+VALUES (4, 'Calculo Numerico', 30);
+
+INSERT INTO DISCIPLINES (DiscId, Name, Credits)
+VALUES (5, 'Psicologia Infantil', 25);
+
+INSERT INTO DISCIPLINES (DiscId, Name, Credits)
+VALUES (6, 'Direito Tributario', 33);
+
+INSERT INTO DISCIPLINES (DiscId, Name, Credits)
+VALUES (7, 'Engenharia de Software', 27);
+
+INSERT INTO COURSES (CourseId, Name, TotalCredits)
+VALUES (2142, 'Engenharia Civil', 1500);
+
+INSERT INTO COURSES (CourseId, Name, TotalCredits)
+VALUES (2143, 'Ciencia da Computacao', 2000);
+
+INSERT INTO COURSES (CourseId, Name, TotalCredits)
+VALUES (2144, 'Direito', 1750);
+
+INSERT INTO COURSES (CourseId, Name, TotalCredits)
+VALUES (2145, 'Pedagogia', 1500);
+
+INSERT INTO COURSES (CourseId, Name, TotalCredits)
+VALUES (2146, 'Odontologia', 1600);
+
+INSERT INTO DISC_COURSE (DiscId, CourseId)
+VALUES (4, 2142);
+
+INSERT INTO DISC_COURSE (DiscId, CourseId)
+VALUES (7, 2142);
+
+INSERT INTO DISC_COURSE (DiscId, CourseId)
+VALUES (1, 2143);
+
+INSERT INTO DISC_COURSE (DiscId, CourseId)
+VALUES (2, 2143);
+
+INSERT INTO DISC_COURSE (DiscId, CourseId)
+VALUES (4, 2143);
+
+INSERT INTO DISC_COURSE (DiscId, CourseId)
+VALUES (7, 2143);
+
+INSERT INTO DISC_COURSE (DiscId, CourseId)
+VALUES (3, 2144);
+
+INSERT INTO DISC_COURSE (DiscId, CourseId)
+VALUES (6, 2144);
+
+INSERT INTO DISC_COURSE (DiscId, CourseId)
+VALUES (5, 2145);
+
+INSERT INTO STUDENTS (StudentId, Name, Address, City, CourseId)
+VALUES (111, 'Edvaldo Carlos Silva', 'Av. Sao Carlos, 186', 'Sao Carlos-SP', 2143);
+
+INSERT INTO STUDENTS (StudentId, Name, Address, City, CourseId)
+VALUES (112, 'Joao Benedito Scapin', 'R. Jose Bonifacio, 70', 'Sao Carlos-SP', 2142);
+
+INSERT INTO STUDENTS (StudentId, Name, Address, City, CourseId)
+VALUES (113, 'Carol Antonia Silveira', 'R. Luiz Camoes, 120', 'Ibate-SP', 2145);
+
+INSERT INTO STUDENTS (StudentId, Name, Address, City, CourseId)
+VALUES (114, 'Marcos Joao Casanova', 'Av. Sao Carlos, 176', 'Sao Carlos-SP', 2143);
+
+INSERT INTO STUDENTS (StudentId, Name, Address, City, CourseId)
+VALUES (115, 'Simone Cristina Lima', 'R. Raul Junior, 180', 'Sao Carlos-SP', 2144);
+
+INSERT INTO STUDENTS (StudentId, Name, Address, City, CourseId)
+VALUES (116, 'Ailton Castro', 'R. Antonio Carlos, 120', 'Ibate-SP', 2142);
+
+INSERT INTO STUDENTS (StudentId, Name, Address, City, CourseId)
+VALUES (117, 'Jose Paulo Figueira', 'R. XV Novembro, 871', 'Sao Carlos-SP', 2145);
+
+INSERT INTO PROFESSORS (ProfId, Name, Admission, ResearchArea)
+VALUES (45675, 'Abgair Simon Ferreira', '1992-04-10', 'Banco de Dados');
+
+INSERT INTO PROFESSORS (ProfId, Name, Admission, ResearchArea)
+VALUES (45690, 'Ramon Travanti', '1993-05-20', 'Direito Romano');
+
+INSERT INTO PROFESSORS (ProfId, Name, Admission, ResearchArea)
+VALUES (45691, 'Gustavo Golveia Netto', '1993-04-05', 'Sociologia');
+
+INSERT INTO PROFESSORS (ProfId, Name, Admission, ResearchArea)
+VALUES (45692, 'Marcos Salvador', '1993-03-31', 'Matematica Financeira');
+
+INSERT INTO PROFESSORS (ProfId, Name, Admission, ResearchArea)
+VALUES (45693, 'Cintia Falcao', '1993-02-15', 'Engenharia de Software');
+
+INSERT INTO CLASSES (StudentId, DiscId, ProfId, Semester, Grade)
+VALUES (111, 1, 45675, '01/1998', 8.5);
+
+INSERT INTO CLASSES (StudentId, DiscId, ProfId, Semester, Grade)
+VALUES (114, 1, 45675, '01/1998', 7.0);
+
+INSERT INTO CLASSES (StudentId, DiscId, ProfId, Semester, Grade)
+VALUES (111, 2, 45675, '01/1998', 6.0);
+
+INSERT INTO CLASSES (StudentId, DiscId, ProfId, Semester, Grade)
+VALUES (114, 2, 45675, '01/1998', 8.0);
+
+INSERT INTO CLASSES (StudentId, DiscId, ProfId, Semester, Grade)
+VALUES (111, 2, 45675, '02/1998', 7.0);
+
+INSERT INTO CLASSES (StudentId, DiscId, ProfId, Semester, Grade)
+VALUES (115, 3, 45690, '01/1998', 4.5);
+
+INSERT INTO CLASSES (StudentId, DiscId, ProfId, Semester, Grade)
+VALUES (115, 3, 45690, '02/1998', 7.5);
+
+INSERT INTO CLASSES (StudentId, DiscId, ProfId, Semester, Grade)
+VALUES (111, 4, 45692, '01/1998', 8.0);
+
+INSERT INTO CLASSES (StudentId, DiscId, ProfId, Semester, Grade)
+VALUES (112, 4, 45692, '01/1998', 7.0);
+
+INSERT INTO CLASSES (StudentId, DiscId, ProfId, Semester, Grade)
+VALUES (113, 5, 45691, '01/1998', 7.5);
+
+INSERT INTO CLASSES (StudentId, DiscId, ProfId, Semester, Grade)
+VALUES (115, 6, 45690, '01/1998', 9.0);
+
+INSERT INTO CLASSES (StudentId, DiscId, ProfId, Semester, Grade)
+VALUES (111, 7, 45693, '01/1998', 10.0);
+
+INSERT INTO CLASSES (StudentId, DiscId, ProfId, Semester, Grade)
+VALUES (112, 7, 45693, '01/1998', 5.5);
+
+INSERT INTO CLASSES (StudentId, DiscId, ProfId, Semester, Grade)
+VALUES (112, 7, 45693, '02/1998', 10.0);
+
+INSERT INTO CLASSES (StudentId, DiscId, ProfId, Semester, Grade)
+VALUES (114, 4, 45692, '01/1998', 6.5);
+
+INSERT INTO CLASSES (StudentId, DiscId, ProfId, Semester, Grade)
+VALUES (114, 4, 45692, '02/1998', 8.5);
+
+INSERT INTO CLASSES (StudentId, DiscId, ProfId, Semester, Grade)
+VALUES (116, 4, 45692, '01/1998', 3.5);
+
+INSERT INTO CLASSES (StudentId, DiscId, ProfId, Semester, Grade)
+VALUES (116, 4, 45692, '02/1998', 9.5);
+
+INSERT INTO CLASSES (StudentId, DiscId, ProfId, Semester, Grade)
+VALUES (114, 7, 45693, '01/1998', 9.5);
+
+INSERT INTO CLASSES (StudentId, DiscId, ProfId, Semester, Grade)
+VALUES (116, 7, 45693, '01/1998', 8.5);
+
+------------------------------------------------------------------
+ORACLE XE 11G Version - PROFESSORS table only.
+
+INSERT INTO PROFESSORS (ProfId, Name, Admission, ResearchArea)
+VALUES (45675, 'Abgair Simon Ferreira', to_date('04/10/1992','DD/MM/YYYY'), 'Banco de Dados');
+
+INSERT INTO PROFESSORS (ProfId, Name, Admission, ResearchArea)
+VALUES (45690, 'Ramon Travanti', to_date('20/05/1993','DD/MM/YYYY'), 'Direito Romano');
+
+INSERT INTO PROFESSORS (ProfId, Name, Admission, ResearchArea)
+VALUES (45691, 'Gustavo Golveia Netto', to_date('05/04/1993','DD/MM/YYYY'), 'Sociologia');
+
+INSERT INTO PROFESSORS (ProfId, Name, Admission, ResearchArea)
+VALUES (45692, 'Marcos Salvador', to_date('31/03/1993','DD/MM/YYYY'), 'Matematica Financeira');
+
+INSERT INTO PROFESSORS (ProfId, Name, Admission, ResearchArea)
+VALUES (45693, 'Cintia Falcao', to_date('15/02/1993','DD/MM/YYYY'), 'Engenharia de Software');
